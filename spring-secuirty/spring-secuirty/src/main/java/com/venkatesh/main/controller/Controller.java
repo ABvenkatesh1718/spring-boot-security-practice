@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 public class Controller {
 
     //Below 2 API are public API
-    @GetMapping(path = "/greetMessage")
+    @GetMapping(path = "public/greetMessage")
     public String greetMessage(){
         return "Welcome to Spring-Security Project";
     }
 
-    @GetMapping(path = "/homePage")
+    @GetMapping(path = "public/homePage")
     public String homePage(){
         return "Welcome to home page";
     }
