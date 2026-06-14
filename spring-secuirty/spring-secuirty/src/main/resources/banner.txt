@@ -1,0 +1,10 @@
+ ######   #######   ######             ##
+##    ## ##     ## ##    ##          ####
+##       ##     ## ##                  ##
+ ######  ##     ## ##       #######    ##
+      ## ##     ## ##                  ##
+##    ## ##     ## ##    ##            ##
+ ######   #######   ######           ######
+
+Project Name = ${spring.application.name} , Version = ${application.version}
+Powered by Spring Boot => ${spring-boot.version}
