@@ -5,7 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,7 +16,9 @@ public class Users implements UserDetails {
     private Long id;
     private String username;
     private String password;
+
     @Column(name = "roles")
+    @Enumerated(EnumType.STRING)
     private Roles role;
 
     public String getUsername() {
@@ -49,7 +51,17 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(Arrays.toString(Roles.values())));
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        // 1. Add the specific permissions mapped to this user's role (e.g., "DATA_READ")
+        for (String permission : this.role.getPermissions()) {
+            authorities.add(new SimpleGrantedAuthority(permission));
+        }
+
+        // 2. Also add the role name itself as an authority (e.g., "ROLE_USER" or "ROLE_ADMIN")
+        authorities.add(new SimpleGrantedAuthority(this.role.name()));
+
+        return authorities;
     }
 
     public String getPassword() {
