@@ -24,4 +24,27 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="20260615-add-age-gender" author="venka">
+        <addColumn tableName="users_db">
+
+            <column name="age" type="INT">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="gender" type="VARCHAR(10)">
+                <constraints nullable="true"
+                             checkConstraint="gender IN ('MALE', 'FEMALE')"/>
+            </column>
+
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="20260615-add-tenantId-col" author="venkat">
+        <addColumn tableName="users_db">
+            <column name="tenantID" type="UUID">
+                <constraints nullable="false" unique="true" uniqueConstraintName="tenantIdUnique"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

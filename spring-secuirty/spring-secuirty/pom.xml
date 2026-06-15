@@ -103,7 +103,6 @@
 					<username>root</username>
 					<password>venkatesh</password>
 					<driver>com.mysql.cj.jdbc.Driver</driver>
-
 					<changeLogFile>db/changelog/db.changelog-master.xml</changeLogFile>
 				</configuration>
 			</plugin>
