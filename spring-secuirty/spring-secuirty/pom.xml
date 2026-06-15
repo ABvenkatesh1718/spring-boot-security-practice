@@ -82,6 +82,10 @@
 			<version>0.12.3</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-liquibase</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -90,7 +94,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>5.0.3</version>
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/security?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</url>
+					<username>root</username>
+					<password>venkatesh</password>
+					<driver>com.mysql.cj.jdbc.Driver</driver>
+
+					<changeLogFile>db/changelog/db.changelog-master.xml</changeLogFile>
+				</configuration>
+			</plugin>
+
 		</plugins>
+
 	</build>
 
 </project>
